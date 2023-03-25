@@ -21,18 +21,18 @@
 
     <fragment
         android:id="@+id/fullScheduleFragment"
-        android:name="com.example.android.busschedule.FullScheduleFragment"
+        android:name="com.example.comp304sec001_lab04.FullScheduleFragment"
         android:label="@string/app_name"
         tools:layout="@layout/full_schedule_fragment">
         <action
-            android:id="@+id/action_fullScheduleFragment_to_stopScheduleFragment"
-            app:destination="@id/stopScheduleFragment" />
+            android:id="@+id/action_fullScheduleFragment_to_airScheduleFragment"
+            app:destination="@id/airScheduleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/stopScheduleFragment"
-        android:name="com.example.android.busschedule.StopScheduleFragment"
+        android:id="@+id/airScheduleFragment"
+        android:name="com.example.comp304sec001_lab04.AirScheduleFragment"
         android:label="{stopName}"
-        tools:layout="@layout/stop_schedule_fragment">
+        tools:layout="@layout/air_schedule_fragment">
         <argument
             android:name="stopName"
             app:argType="string" />

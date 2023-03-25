@@ -1,4 +1,4 @@
-package com.example.android.busschedule.viewmodels
+package com.example.comp304sec001_lab04.viewmodels
 /*
  * Copyright (C) 2021 The Android Open Source Project
  *
@@ -17,24 +17,24 @@ package com.example.android.busschedule.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.busschedule.database.schedule.Schedule
-import com.example.android.busschedule.database.schedule.ScheduleDao
+import com.example.comp304sec001_lab04.database.schedule.Schedule
+import com.example.comp304sec001_lab04.database.schedule.ScheduleDao
 import kotlinx.coroutines.flow.Flow
 
-class BusScheduleViewModel(private val scheduleDao: ScheduleDao): ViewModel() {
+class AirScheduleViewModel(private val scheduleDao: ScheduleDao): ViewModel() {
 
     fun fullSchedule(): Flow<List<Schedule>> = scheduleDao.getAll()
 
     fun scheduleForStopName(name: String): Flow<List<Schedule>> = scheduleDao.getByStopName(name)
 }
 
-class BusScheduleViewModelFactory(
+class AirScheduleViewModelFactory(
     private val scheduleDao: ScheduleDao
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(BusScheduleViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(AirScheduleViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return BusScheduleViewModel(scheduleDao) as T
+            return AirScheduleViewModel(scheduleDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

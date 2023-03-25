@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.busschedule
+package com.example.comp304sec001_lab04
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,39 +22,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.busschedule.databinding.StopScheduleFragmentBinding
-import com.example.android.busschedule.viewmodels.BusScheduleViewModel
-import com.example.android.busschedule.viewmodels.BusScheduleViewModelFactory
+import com.example.comp304sec001_lab04.databinding.FullScheduleFragmentBinding
+import com.example.comp304sec001_lab04.viewmodels.AirScheduleViewModel
+import com.example.comp304sec001_lab04.viewmodels.AirScheduleViewModelFactory
 import kotlinx.coroutines.launch
 
-class StopScheduleFragment: Fragment() {
+class FullScheduleFragment: Fragment() {
 
-    companion object {
-        var STOP_NAME = "stopName"
-    }
-
-    private var _binding: StopScheduleFragmentBinding? = null
+    private var _binding: FullScheduleFragmentBinding? = null
 
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
 
-    private lateinit var stopName: String
-
-    private val viewModel: BusScheduleViewModel by activityViewModels {
-        BusScheduleViewModelFactory(
-            (activity?.application as BusScheduleApplication).database.scheduleDao()
+    private val viewModel: AirScheduleViewModel by activityViewModels {
+        AirScheduleViewModelFactory(
+            (activity?.application as AirScheduleApplication).database.scheduleDao()
         )
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            stopName = it.getString(STOP_NAME).toString()
-        }
     }
 
     override fun onCreateView(
@@ -62,7 +49,7 @@ class StopScheduleFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = StopScheduleFragmentBinding.inflate(inflater, container, false)
+        _binding = FullScheduleFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -71,13 +58,16 @@ class StopScheduleFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val busStopAdapter = BusStopAdapter({})
-        // by passing in the stop name, filtered results are returned,
-        // and tapping rows won't trigger navigation
-        recyclerView.adapter = busStopAdapter
+        val airlineAdapter = AirlineAdapter {
+            val action = FullScheduleFragmentDirections.actionFullScheduleFragmentToAirScheduleFragment(
+                    stopName = it.stopName
+                )
+            view.findNavController().navigate(action)
+        }
+        recyclerView.adapter = airlineAdapter
         lifecycle.coroutineScope.launch {
-            viewModel.scheduleForStopName(stopName).collect() {
-                busStopAdapter.submitList(it)
+            viewModel.fullSchedule().collect() {
+                airlineAdapter.submitList(it)
             }
         }
     }

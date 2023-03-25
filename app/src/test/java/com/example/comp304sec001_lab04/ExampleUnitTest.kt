@@ -1,4 +1,4 @@
-package com.example.android.busschedule
+package com.example.comp304sec001_lab04
 
 import org.junit.Test
 

@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Bus Schedule</string>
-    <!-- Shown above left column listing bus stops in full schedule fragment -->
-    <string name="bus_stop_header">Stop Name</string>
-    <!-- Shown above right column listing arrival times in full schedule fragment -->
+    <string name="app_name">COMP304Sec001_Lab04</string>
+    <string name="airline_header">Airline</string>
     <string name="arrival_time_header">Arrival Time</string>
 </resources>
