@@ -31,10 +31,10 @@
     <fragment
         android:id="@+id/airScheduleFragment"
         android:name="com.example.comp304sec001_lab04.AirScheduleFragment"
-        android:label="{stopName}"
+        android:label="{airlineName}"
         tools:layout="@layout/air_schedule_fragment">
         <argument
-            android:name="stopName"
+            android:name="airlineName"
             app:argType="string" />
     </fragment>
 </navigation>

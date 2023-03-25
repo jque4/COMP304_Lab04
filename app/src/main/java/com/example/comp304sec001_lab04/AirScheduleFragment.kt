@@ -32,7 +32,7 @@ import kotlinx.coroutines.launch
 class AirScheduleFragment: Fragment() {
 
     companion object {
-        var STOP_NAME = "stopName"
+        var AIRLINE_NAME = "airlineName"
     }
 
     private var _binding: AirScheduleFragmentBinding? = null
@@ -41,7 +41,7 @@ class AirScheduleFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private lateinit var stopName: String
+    private lateinit var airlineName: String
 
     private val viewModel: AirScheduleViewModel by activityViewModels {
         AirScheduleViewModelFactory(
@@ -53,7 +53,7 @@ class AirScheduleFragment: Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            stopName = it.getString(STOP_NAME).toString()
+            airlineName = it.getString(AIRLINE_NAME).toString()
         }
     }
 
@@ -74,7 +74,7 @@ class AirScheduleFragment: Fragment() {
         val airlineAdapter = AirlineAdapter({})
         recyclerView.adapter = airlineAdapter
         lifecycle.coroutineScope.launch {
-            viewModel.scheduleForStopName(stopName).collect {
+            viewModel.scheduleForFlightName(airlineName).collect {
                 airlineAdapter.submitList(it)
             }
         }

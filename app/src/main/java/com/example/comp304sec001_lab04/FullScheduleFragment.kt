@@ -60,7 +60,7 @@ class FullScheduleFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val airlineAdapter = AirlineAdapter {
             val action = FullScheduleFragmentDirections.actionFullScheduleFragmentToAirScheduleFragment(
-                    stopName = it.stopName
+                    airlineName = it.airlineName
                 )
             view.findNavController().navigate(action)
         }
@@ -77,3 +77,5 @@ class FullScheduleFragment: Fragment() {
         _binding = null
     }
 }
+
+

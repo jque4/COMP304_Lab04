@@ -28,6 +28,8 @@ import androidx.room.PrimaryKey
 @Entity
 data class Schedule(
     @PrimaryKey val id: Int,
-    @NonNull @ColumnInfo(name = "stop_name") val stopName: String,
-    @NonNull @ColumnInfo(name = "arrival_time") val arrivalTime: Int
+    @NonNull @ColumnInfo(name = "airline_name") val airlineName: String,
+    @NonNull @ColumnInfo(name = "arrival_time") val arrivalTime: Int,
+    @NonNull @ColumnInfo(name = "terminal_no") val terminalNo: String
+    //Terminal info goes here
 )

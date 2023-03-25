@@ -51,7 +51,7 @@ class AirlineAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDateFormat")
         fun bind(schedule: Schedule) {
-            binding.airlineTextView.text = schedule.stopName
+            binding.airlineTextView.text = schedule.airlineName
             binding.arrivalTimeTextView.text = SimpleDateFormat(
                 "h:mm a").format(Date(schedule.arrivalTime.toLong() * 1000)
             )

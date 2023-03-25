@@ -12,7 +12,7 @@ import com.example.comp304sec001_lab04.database.schedule.ScheduleDao
  * Version is incremented as new tables/columns are added/removed/changed.
  * You can optionally use this class for one-time setup, such as pre-populating a database.
  */
-@Database(entities = arrayOf(Schedule::class), version = 1)
+@Database(entities = arrayOf(Schedule::class), version = 3)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun scheduleDao(): ScheduleDao
 
@@ -27,6 +27,7 @@ abstract class AppDatabase: RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database")
                     .createFromAsset("database/air_schedule.db")
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
 
