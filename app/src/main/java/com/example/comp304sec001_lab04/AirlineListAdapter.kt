@@ -55,6 +55,7 @@ class AirlineAdapter(
             binding.arrivalTimeTextView.text = SimpleDateFormat(
                 "h:mm a").format(Date(schedule.arrivalTime.toLong() * 1000)
             )
+            binding.terminalTextView.text = schedule.terminalNo
         }
     }
 }

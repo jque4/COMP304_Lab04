@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">COMP304Sec001_Lab04</string>
-    <string name="airline_header">Airline</string>
+    <string name="app_name">AirSchedule</string>
+    <string name="airline_header">Airline Name</string>
     <string name="arrival_time_header">Arrival Time</string>
+    <string name="terminal_header">Terminal</string>
 </resources>
