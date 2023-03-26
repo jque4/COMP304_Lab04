@@ -15,38 +15,64 @@
 -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FullScheduleFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".FullScheduleFragment">
 
     <TextView
         android:id="@+id/airline_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/airline_header"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:gravity="center_horizontal"
         android:padding="8dp"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintWidth_percent="0.23"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/arrival_time_header"
-        app:layout_constraintEnd_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/arrival_time_header"/>
 
     <TextView
         android:id="@+id/arrival_time_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/arrival_time_header"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:gravity="center_horizontal"
         android:padding="8dp"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintWidth_percent="0.37"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/airline_header"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toStartOf="@id/terminal_no_header"/>
+
+    <TextView
+        android:id="@+id/terminal_no_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/terminal_no_header"
+        android:textSize="12sp"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
+        app:layout_constraintWidth_percent="0.17"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/arrival_time_header"
+        app:layout_constraintEnd_toEndOf="@id/status_header"/>
+
+    <TextView
+        android:id="@+id/status_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/status_header"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
+        app:layout_constraintWidth_percent="0.20"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/terminal_no_header"
+        app:layout_constraintEnd_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

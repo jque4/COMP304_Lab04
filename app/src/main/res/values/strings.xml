@@ -2,4 +2,6 @@
     <string name="app_name">COMP304Sec001_Lab04</string>
     <string name="airline_header">Airline</string>
     <string name="arrival_time_header">Arrival Time</string>
+    <string name="terminal_no_header">Terminal</string>
+    <string name="status_header">Status</string>
 </resources>

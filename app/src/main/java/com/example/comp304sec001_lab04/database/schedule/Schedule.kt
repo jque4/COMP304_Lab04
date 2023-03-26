@@ -30,6 +30,6 @@ data class Schedule(
     @PrimaryKey val id: Int,
     @NonNull @ColumnInfo(name = "airline_name") val airlineName: String,
     @NonNull @ColumnInfo(name = "arrival_time") val arrivalTime: Int,
-    @NonNull @ColumnInfo(name = "terminal_no") val terminalNo: String
-    //Terminal info goes here
+    @NonNull @ColumnInfo(name = "terminal_no") val terminalNo: String,
+    @NonNull @ColumnInfo(name = "status") val status: String
 )
